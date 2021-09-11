@@ -39,5 +39,7 @@
 
     <!-- Notification -->
     <string name="channel_name">Simple Alarms</string>
+    <string name="every_day">Every Day</string>
+    <string name="sleep_time">Sleep Time</string>
 
 </resources>

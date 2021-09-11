@@ -13,6 +13,7 @@ public final class Alarm implements Parcelable{
     private Alarm(Parcel in) {
         id = in.readLong();
         time = in.readLong();
+        sleepTime = in.readLong();
         label = in.readString();
         allDays = in.readSparseBooleanArray();
         isEnabled = in.readByte() != 0;
@@ -39,6 +40,7 @@ public final class Alarm implements Parcelable{
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeLong(id);
         parcel.writeLong(time);
+        parcel.writeLong(sleepTime);
         parcel.writeString(label);
         parcel.writeSparseBooleanArray(allDays);
         parcel.writeByte((byte) (isEnabled ? 1 : 0));
@@ -59,6 +61,7 @@ public final class Alarm implements Parcelable{
 
     private final long id;
     private long time;
+    private long sleepTime;
     private String label;
     private SparseBooleanArray allDays;
     private boolean isEnabled;
@@ -68,14 +71,14 @@ public final class Alarm implements Parcelable{
     }
 
     public Alarm(long id) {
-        this(id, System.currentTimeMillis());
+        this(id, System.currentTimeMillis(), 21600000L);
     }
 
-    public Alarm(long id, long time, @Days int... days) {
-        this(id, time, null, days);
+    public Alarm(long id, long time, long sleepTime, @Days int... days) {
+        this(id, time, sleepTime, null, days);
     }
 
-    public Alarm(long id, long time, String label, @Days int... days) {
+    public Alarm(long id, long time, long sleepTime, String label, @Days int... days) {
         this.id = id;
         this.time = time;
         this.label = label;
@@ -92,6 +95,14 @@ public final class Alarm implements Parcelable{
 
     public long getTime() {
         return time;
+    }
+
+    public void setSleepTime(long sleepTime) {
+        this.sleepTime = sleepTime;
+    }
+
+    public long getSleepTime() {
+        return sleepTime;
     }
 
     public void setLabel(String label) {

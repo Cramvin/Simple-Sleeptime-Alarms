@@ -20,6 +20,31 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/list_padding_vertical_small"
+            android:text="@string/label"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            tools:text="Label" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/list_padding_vertical_small"
+            android:background="@drawable/divider" />
+
+        <EditText
+            android:id="@+id/edit_alarm_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:hint="@string/add_label_hint"
+            android:inputType="textCapWords"
+            android:maxLength="15"
+            android:textColor="@color/secondary_text"
+            android:textStyle="italic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginBottom="@dimen/list_padding_vertical_small"
             android:text="@string/time"
@@ -41,29 +66,29 @@
             tools:targetApi="lollipop" />
 
         <TextView
+            android:id="@+id/TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_marginBottom="@dimen/list_padding_vertical_small"
-            android:text="@string/label"
-            tools:text="Label"/>
+            android:text="@string/sleep_time"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            tools:text="Sleep Time" />
 
         <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="@dimen/list_padding_vertical_small"
             android:background="@drawable/divider" />
 
-        <EditText
-            android:id="@+id/edit_alarm_label"
+        <TimePicker
+            android:id="@+id/edit_alarm_sleep_time_picker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapWords"
-            android:maxLength="15"
-            android:textColor="@color/secondary_text"
-            android:textStyle="italic"
-            android:hint="@string/add_label_hint"
-            android:layout_marginBottom="@dimen/activity_vertical_margin" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:timePickerMode="spinner"
+            tools:targetApi="lollipop" />
 
         <TextView
             android:layout_width="match_parent"
