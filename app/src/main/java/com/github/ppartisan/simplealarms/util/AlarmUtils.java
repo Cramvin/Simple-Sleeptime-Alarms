@@ -24,6 +24,7 @@ import static com.github.ppartisan.simplealarms.data.DatabaseHelper.COL_SAT;
 import static com.github.ppartisan.simplealarms.data.DatabaseHelper.COL_SUN;
 import static com.github.ppartisan.simplealarms.data.DatabaseHelper.COL_THURS;
 import static com.github.ppartisan.simplealarms.data.DatabaseHelper.COL_TIME;
+import static com.github.ppartisan.simplealarms.data.DatabaseHelper.COL_SLEEPTIME;
 import static com.github.ppartisan.simplealarms.data.DatabaseHelper.COL_TUES;
 import static com.github.ppartisan.simplealarms.data.DatabaseHelper.COL_WED;
 import static com.github.ppartisan.simplealarms.data.DatabaseHelper._ID;
@@ -64,9 +65,10 @@ public final class AlarmUtils {
 
     public static ContentValues toContentValues(Alarm alarm) {
 
-        final ContentValues cv = new ContentValues(10);
+        final ContentValues cv = new ContentValues(11);
 
         cv.put(COL_TIME, alarm.getTime());
+        cv.put(COL_SLEEPTIME, alarm.getSleepTime());
         cv.put(COL_LABEL, alarm.getLabel());
 
         final SparseBooleanArray days = alarm.getDays();
@@ -97,6 +99,7 @@ public final class AlarmUtils {
 
                 final long id = c.getLong(c.getColumnIndex(_ID));
                 final long time = c.getLong(c.getColumnIndex(COL_TIME));
+                final long sleepTime = c.getLong(c.getColumnIndex(COL_SLEEPTIME));
                 final String label = c.getString(c.getColumnIndex(COL_LABEL));
                 final boolean mon = c.getInt(c.getColumnIndex(COL_MON)) == 1;
                 final boolean tues = c.getInt(c.getColumnIndex(COL_TUES)) == 1;
@@ -107,7 +110,7 @@ public final class AlarmUtils {
                 final boolean sun = c.getInt(c.getColumnIndex(COL_SUN)) == 1;
                 final boolean isEnabled = c.getInt(c.getColumnIndex(COL_IS_ENABLED)) == 1;
 
-                final Alarm alarm = new Alarm(id, time, label);
+                final Alarm alarm = new Alarm(id, time, sleepTime, label);
                 alarm.setDay(Alarm.MON, mon);
                 alarm.setDay(Alarm.TUES, tues);
                 alarm.setDay(Alarm.WED, wed);

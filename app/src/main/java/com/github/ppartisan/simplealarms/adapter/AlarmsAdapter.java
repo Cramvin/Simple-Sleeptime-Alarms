@@ -51,7 +51,9 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
         final Alarm alarm = mAlarms.get(position);
 
         holder.time.setText(AlarmUtils.getReadableTime(alarm.getTime()));
+        holder.sleepTime.setText(AlarmUtils.getReadableTime(alarm.getSleepTime()));
         holder.amPm.setText(AlarmUtils.getAmPm(alarm.getTime()));
+        holder.h.setText("H");
         holder.label.setText(alarm.getLabel());
         holder.days.setText(buildSelectedDays(alarm));
 
@@ -112,13 +114,15 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
 
     static final class ViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView time, amPm, label, days;
+        final TextView time, sleepTime, amPm, h, label, days;
 
         ViewHolder(View itemView) {
             super(itemView);
 
             time = itemView.findViewById(R.id.ar_time);
+            sleepTime = itemView.findViewById(R.id.ar_sleep_time);
             amPm = itemView.findViewById(R.id.ar_am_pm);
+            h = itemView.findViewById(R.id.ar_h);
             label = itemView.findViewById(R.id.ar_label);
             days = itemView.findViewById(R.id.ar_days);
 

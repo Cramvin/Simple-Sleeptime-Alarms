@@ -118,7 +118,7 @@ public final class AddEditAlarmFragment extends Fragment {
         final Calendar sleepTime = Calendar.getInstance();
         sleepTime.set(Calendar.MINUTE, ViewUtils.getTimePickerMinute(mSleepTimePicker));
         sleepTime.set(Calendar.HOUR_OF_DAY, ViewUtils.getTimePickerHour(mSleepTimePicker));
-        alarm.setTime(sleepTime.getTimeInMillis());
+        alarm.setSleepTime(sleepTime.getTimeInMillis());
 
         alarm.setLabel(mLabel.getText().toString());
 

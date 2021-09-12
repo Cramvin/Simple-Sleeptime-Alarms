@@ -81,6 +81,7 @@ public final class Alarm implements Parcelable{
     public Alarm(long id, long time, long sleepTime, String label, @Days int... days) {
         this.id = id;
         this.time = time;
+        this.sleepTime = sleepTime;
         this.label = label;
         this.allDays = buildDaysArray(days);
     }
@@ -143,6 +144,7 @@ public final class Alarm implements Parcelable{
         return "Alarm{" +
                 "id=" + id +
                 ", time=" + time +
+                ", sleep time=" + sleepTime +
                 ", label='" + label + '\'' +
                 ", allDays=" + allDays +
                 ", isEnabled=" + isEnabled +
@@ -154,6 +156,7 @@ public final class Alarm implements Parcelable{
         int result = 17;
         result = 31 * result + (int) (id^(id>>>32));
         result = 31 * result + (int) (time^(time>>>32));
+        result = 31 * result + (int) (sleepTime^(sleepTime>>>32));
         result = 31 * result + label.hashCode();
         for(int i = 0; i < allDays.size(); i++) {
             result = 31 * result + (allDays.valueAt(i)? 1 : 0);
