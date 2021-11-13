@@ -30,7 +30,6 @@ import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.KITKAT;
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
 import static android.os.Build.VERSION_CODES.O;
-import static com.github.ppartisan.simplealarms.ui.AlarmLandingPageActivity.launchIntent;
 
 public final class AlarmReceiver extends BroadcastReceiver {
 
@@ -208,7 +207,7 @@ public final class AlarmReceiver extends BroadcastReceiver {
 
     private static PendingIntent launchAlarmLandingPage(Context ctx, Alarm alarm) {
         return PendingIntent.getActivity(
-                ctx, alarm.notificationId(), launchIntent(ctx), FLAG_UPDATE_CURRENT
+                ctx, alarm.notificationId(), null, FLAG_UPDATE_CURRENT
         );
     }
 

@@ -3,7 +3,8 @@
     package="com.github.ppartisan.simplealarms">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -15,28 +16,25 @@
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.AddEditAlarmActivity" />
-
-        <activity
-            android:name=".ui.AlarmLandingPageActivity"
-            android:theme="@style/AlertLandingPageTheme" />
+        <activity android:name=".ui.SettingsActivity" />
 
         <service android:name=".service.LoadAlarmsService" />
 
         <receiver android:name=".service.LoadAlarmsReceiver" />
-
         <receiver android:name=".service.AlarmReceiver" />
-
-        <receiver android:name=".service.BootReceiver" android:enabled="true" android:exported="true">
+        <receiver
+            android:name=".service.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
             <intent-filter android:priority="${bootPriority}">
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

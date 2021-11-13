@@ -57,17 +57,14 @@ public final class AlarmsAdapter extends RecyclerView.Adapter<AlarmsAdapter.View
         holder.label.setText(alarm.getLabel());
         holder.days.setText(buildSelectedDays(alarm));
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Context c = view.getContext();
-                final Intent launchEditAlarmIntent =
-                        AddEditAlarmActivity.buildAddEditAlarmActivityIntent(
-                                c, AddEditAlarmActivity.EDIT_ALARM
-                        );
-                launchEditAlarmIntent.putExtra(AddEditAlarmActivity.ALARM_EXTRA, alarm);
-                c.startActivity(launchEditAlarmIntent);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            final Context c1 = view.getContext();
+            final Intent launchEditAlarmIntent =
+                    AddEditAlarmActivity.buildAddEditAlarmActivityIntent(
+                            c1, AddEditAlarmActivity.EDIT_ALARM
+                    );
+            launchEditAlarmIntent.putExtra(AddEditAlarmActivity.ALARM_EXTRA, alarm);
+            c1.startActivity(launchEditAlarmIntent);
         });
 
     }
